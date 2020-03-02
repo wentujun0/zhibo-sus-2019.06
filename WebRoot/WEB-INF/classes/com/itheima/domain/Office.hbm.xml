@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.itheima.domain.Office" table="office" lazy="false" >
+		<id name="oid" column="Oid">
+			<generator class="native"></generator>
+		</id>
+<!-- 			private long id;
+	private String name;
+	private long company_id; 
+	private Company company;
+	-->
+		<property name="id" column="office_id"/>
+		<property name="name" column="office_name"/>
+		
+		<!-- 配置多的一方，放置的是一的一方的实体类 -->
+		<!-- 需要设置外键 -->
+		<many-to-one name="company" class="com.itheima.domain.Company" column="company_id" />
+
+	</class>
+
+
+</hibernate-mapping>

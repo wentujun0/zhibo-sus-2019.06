@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 视频表的配置 -->
+	<!-- 建立类与表的映射 -->
+	<class name="com.itheima.domain.Video" table="video">
+		<!-- 建立类中的属性与表中的主键对应 -->
+		<id name="id" column="v_id" >
+			<!-- 主键生成策略 -->
+			<generator class="native"/>
+		</id>
+		<!-- private String v_name;
+	private String v_realname;
+	private String v_description;
+	private String v_create_by;
+	private String v_create_date;
+	private String v_url;
+	private String v_level; -->
+		<!-- 建立类中的普通的属性和表的字段的对应 -->
+		<property name="name" column="v_name" />
+		<property name="realname" column="v_realname" />
+		<property name="description" column="v_description" />
+		<property name="create_by" column="v_create_by" />
+		<property name="create_date" column="v_vreate_date" type="java.sql.Date" />
+		<property name="url" column="v_url" />
+		<property name="level" column="v_level" />		
+	</class>
+</hibernate-mapping>

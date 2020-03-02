@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<!-- <link rel="stylesheet" type="text/css" href="css/boostrap.mim.css"> -->
+	
+	<!-- jQuery and Modernizr-->
+	<script src="js/jquery-2.1.1.js"></script>
+	<!-- Core JavaScript Files -->  	 
+    <script type=“text/javascript src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/showlist.js"></script>
+  </head>
+  
+  <body>
+    <h1>登录操作页面</h1>
+    <table>
+    	<form >
+    	<tr><h3>欢迎登录</h3></tr>
+    	<tr>
+    		<td>用户名:</td>
+    		<td><input name="username" id="username"  ></td>
+    	</tr>
+    	<tr>
+    		<td>密码:</td>
+    		<td><input name="userpassword" id="password" ></td>
+    	</tr>
+    	<tr>
+    		<td><input type="submit" id="submit" value="提交" onclick="return test()"></td>
+    	</tr>
+    	<tr>
+    	
+    	
+    	
+    	<td>所属院：</td>
+			<td>
+				<select id="companyId" name="office" class=textbox style="width: 180px" maxLength=50 >
+				</select>
+			</td>
+		<td>所属系：</td>
+				<td>
+				 <select id="officeId" class=textbox style="width: 180px" maxLength=50 >
+				</select>
+				</td>
+    	</tr>
+    	
+    
+    	</form>
+    </table>
+    <h2>传参回来</h2>
+    <table>
+    	<tr> 
+    		<td>回参1</td>
+    		<td><div  id="re1"></div></td>
+    	
+    	</tr>
+    	<tr>
+    		<td>回参2</td>
+    		<td><div id="re2"></div></td>
+    	</tr>
+    
+    </table>
+    
+    
+  </body>
+</html>

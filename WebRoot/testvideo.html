@@ -1,0 +1,35 @@
+﻿<html>
+<head>
+<title>Red5 - OFLADemo</title>
+<script type='text/javascript' src='jwplayer.js'></script>
+</head>
+<body>
+
+<div id='mediaspace2'>This text will be replaced</div>
+<script type='text/javascript'>
+  jwplayer('mediaspace2').setup({
+    'flashplayer': 'player.swf',
+    'file': 'test.mp4',
+    'streamer': 'rtmpt://localhost:5080/oflaDemo',
+    'controlbar': 'bottom',
+    'width': '848',
+    'height': '360'
+  });
+</script>
+<br/>
+<!--<div id="player1">
+<script type='text/javascript'>
+  jwplayer('player1').setup({
+    'flashplayer': 'player.swf',
+    'file': 'test.mp4',
+    'streamer': 'rtmp://127.0.0.1:5080/oflaDemo',
+    'controlbar': 'bottom',
+    'width': '848',
+    'height': '360'
+  });
+
+  
+</script>
+</div>-->
+</body>
+</html>

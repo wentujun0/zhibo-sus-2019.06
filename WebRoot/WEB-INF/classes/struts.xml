@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 配置Struts2的常量 -->
+	<constant name="struts.action.extension" value="action"/>
+	<!-- 设置上传的最大值  100MB -->
+	<constant name="struts.multipart.maxSize" value="104857600" />
+	
+	<package name="ORA" extends="json-default" namespace="/">
+	
+		<!-- 定义拦截器 -->
+  		<interceptors>
+			<interceptor name="privilegeInterceptor" class="com.itheima.web.interceptor.PrivilegeInterceptor"/>
+		</interceptors>  	
+		
+	
+	
+		<global-results>
+			<result name="login">/login.jsp</result>
+		</global-results>
+	
+	<!-- 	<action name="customer_*" class="com.itheima.web.action.CustomerAction" method="{1}">
+			<result name="findSuccess">/jsp/user/list.jsp</result>
+			<result name="saveUI">/jsp/user/add.jsp</result>
+			<result name="saveSuccess" type="redirectAction">customer_find.action</result>
+		</action>
+		-->
+		<!-- 测试专用action -->
+		<action name="file_*" class="com.itcast.test.Struts2Upload" method="{1}">
+		  <!-- 指定（限制）上传文件的类型，定义局部拦截器，修改默认拦截器的属性 
+                "fileUpload.maximumSize" ：限制上传最大的文件大小。 
+                "fileUpload.allowedTypes"：允许上传文件的类型。 
+                "fileUpload.allowedExtensions"：允许上传文件的可扩展文件类型。 -->
+            <interceptor-ref name="defaultStack">
+                <param name="fileUpload.maximumSize">52428800</param><!-- 50mb     -->
+                <param name="fileUpload.allowedTypes">text/plain,video/x-flv,video/mp4</param>
+                <param name="fileUpload.allowedExtensions">.txt,.flv,.mp4</param>
+            </interceptor-ref>
+            
+			<result name="success">/jsp/success.jsp</result>
+		
+		</action>
+		
+		<!-- 设置用户登录的action -->
+		<action name="user_*" class="com.itheima.web.action.UserAction" method="{1}">
+			<result name="success" type="redirect">/index.jsp</result>
+			<result name="findAllSuccess">/jsp/user/list.jsp</result>
+			
+			<result name="deleteSuccess" type="redirect">/jsp/success.jsp</result>
+			<result name="addSuccess">/jsp/success.jsp</result>
+			<result name="addFaile">/jsp/error.jsp</result>
+			<result name="addUser" type="json" >
+			<!-- 这里的name=root是返回json数据时的一种类型，root是json字符串中只包含该对象的属性，而其他类型，可能会在返回的json类型中额外包含其他的属性和值 ，不一一说了-->
+                <!-- 然后这个returndata 是我们action里定义的返回的json。 -->
+				<param name="root">resultdata</param>
+				
+				<!-- <param name="contentType">text/html;charset=utf-8</param>
+                <param name="inputName">is</param> -->
+			</result>
+			
+			<!-- 引入拦截器 -->
+		<interceptor-ref name="privilegeInterceptor">
+				<param name="excludeMethods">login</param>
+		</interceptor-ref>
+			<interceptor-ref name="defaultStack"/>  
+			
+			
+						
+		</action>
+		<!-- 先展示页面的action -->
+		<!-- 测试ajax -->
+		<action name="show_*" class="com.itheima.web.action.ShowAction" method="{1}">
+			
+			<result name="showSuccess">/jsp/user/add.jsp</result>
+			<result  type="json">
+				<param name="root">returndata</param>
+			</result>
+			<result name="officeSuccess" type="json">
+				<param name="root">officedata</param>
+			</result>
+			
+		</action>
+		<!-- 退出页面的action -->
+		<action name="login_*" class="com.itheima.web.action.LoginerAction" method="{1}">
+			<result name="logout">/login.jsp</result>
+			<result name="updateSuccess">/login.jsp</result>
+			<result name="faile">/jsp/loginer/update.jsp</result>
+		</action>
+		
+		
+		<!-- video的action -->
+		<action name="video_*" class="com.itheima.web.action.VideoAction" method="{1}">
+			 <!-- 指定（限制）上传文件的类型，定义局部拦截器，修改默认拦截器的属性 
+                "fileUpload.maximumSize" ：限制上传最大的文件大小。 
+                "fileUpload.allowedTypes"：允许上传文件的类型。 
+                "fileUpload.allowedExtensions"：允许上传文件的可扩展文件类型。 -->
+            <interceptor-ref name="defaultStack">
+                <param name="fileUpload.maximumSize">52428800</param><!-- 50mb     -->
+                <param name="fileUpload.allowedTypes">text/plain,video/x-flv,video/mp4</param>
+                <param name="fileUpload.allowedExtensions">.txt,.flv,.mp4</param>
+            </interceptor-ref>
+			<result name="findAllSuccess">/jsp/video/list.jsp</result>
+			<result name="findOneSuccess" type="json">
+				<param name="root">videodata</param>
+			</result>
+			<result name="uploadSuccess">/jsp/success.jsp</result>
+			<result name="uploadFaile">/jsp/error.jsp</result>
+		</action>
+		
+		
+		
+		<!-- live.action -->
+		<action name="live_*" class="com.itheima.web.action.LiveAction" method="{1}">
+			<result name="findAllSuccess">/jsp/live/list.jsp</result>
+			<result name="addLive">/jsp/live/list.jsp</result>
+			<result name="openSuccess">/jsp/success.jsp</result>
+			<result name="openFaile">/jsp/error.jsp</result>
+			<result name="closeSuccess">/jsp/success.jsp</result>
+			<result name="closeFaile">/jsp/error.jsp</result>
+			<result name="findOneliveSuccess" type="json">
+				<param name="root">livedata</param>
+			</result>
+		</action>
+		
+			<!-- 前台页面的ajax -->
+		<action name="showview_*" class="com.itheima.web.action.ShowViewAction" method="{1}">
+			<result name="viewliveSucces" type="json">
+				<param name="root">livedata</param>
+			</result>
+			<result name="viewvideoSuccess" type="json">
+				<param name="root">videodata</param>
+			</result>
+		</action>
+		
+	
+		
+		
+	</package>
+	
+	
+	
+</struts>

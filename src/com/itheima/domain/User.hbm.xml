@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 建立类与表的映射 -->
+	<class name="com.itheima.domain.User" table="sys_user">
+		<!-- 建立类中的属性与表中的主键对应 -->
+		<id name="user_id" column="user_id" >
+			<!-- 主键生成策略 -->
+			<generator class="native"/>
+		</id>
+		
+		<!-- 建立类中的普通的属性和表的字段的对应 -->
+		<property name="username" column="username" />
+		<property name="password" column="password" />
+		<property name="name" column="name" />
+		<property name="no" column="no" />
+		<property name="email" column="email" />
+		<property name="phone" column="phone" />
+		<property name="create_by" column="create_by" />
+		<property name="create_time" column="create_time" type="java.sql.Date" />
+		<property name="level" column="level" length="11" />
+		<property name="company_id" column="company_id" />
+		<property name="office_id" column="office_id" />
+	</class>
+</hibernate-mapping>

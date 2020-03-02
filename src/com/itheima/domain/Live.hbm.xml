@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 建立类与表的映射 -->
+	<class name="com.itheima.domain.Live" table="live">
+		<!-- 建立类中的属性与表中的主键对应 -->
+		<id name="id" column="l_id" >
+			<!-- 主键生成策略 -->
+			<generator class="native"/>
+		</id>
+		<!-- private String l_id;
+	private String l_name;//直播展示的名字
+	private String l_password;//直播的密码
+	private String l_description;
+	private String l_create_by;
+	private String l_create_date;//直播的创建时间
+	private String l_date;//直播时间
+	private String l_url;//直播的地址
+	private String l_level; -->
+		<!-- 建立类中的普通的属性和表的字段的对应 -->
+		<property name="name" column="l_name" />
+		<property name="password" column="l_password" />
+		<property name="description" column="l_description" />
+		<property name="create_by" column="l_create_by" />
+		<property name="create_date" column="l_create_date" type="java.sql.Date" />
+		<property name="date" column="l_date" type="java.sql.Timestamp"/>
+		<property name="url" column="l_url" />
+		<property name="level" column="l_level"  />
+		<property name="status" column="l_status"  />
+		
+	
+	</class>
+</hibernate-mapping>

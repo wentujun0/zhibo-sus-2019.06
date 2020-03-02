@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="zhibo"
+  id="myeclipse.1558167471501"
+  context-root="/zhibo"
+  j2ee-spec="6.0"
+  archive="zhibo.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
